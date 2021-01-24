@@ -29,11 +29,14 @@ const useStyles = makeStyles((theme) => ({
 
 interface IProps {
   movie: IMovie;
+  onClick: (id: string) => void;
 }
 
-const MovieCard: React.FC<IProps> = ({ movie }) => {
+const MovieCard: React.FC<IProps> = ({ movie, onClick }) => {
   const classes = useStyles();
-
+  const handleOnClick = () => {
+    onClick(movie.imdbID);
+  };
   return (
     <Card elevation={5} className={classes.wrapper}>
       <Grid container>
@@ -51,6 +54,7 @@ const MovieCard: React.FC<IProps> = ({ movie }) => {
             size="small"
             color="secondary"
             variant="outlined"
+            onClick={handleOnClick}
             className={classes.ctaBtn}
           >
             View More

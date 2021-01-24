@@ -1,21 +1,19 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { IMovie } from "shared/types";
-
+import { IMovieDetail } from "shared/types";
 import { MainLayout } from "shared/layouts";
-import { Card, Spinner, Typography } from "shared/components/atoms";
-import { SearchBar } from "shared/components/molecules";
 
-import MovieList from "./MovieList";
+import { Card, Spinner } from "shared/components/atoms";
+import { SearchBar, Cast } from "shared/components/molecules";
+
+import MovieDetail from "./MovieDetail";
 
 interface IProps {
   value: string;
   loading: boolean;
-  totalResults: string;
-  results: IMovie[];
+  results: IMovieDetail;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  onClick: (id: string) => void;
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -38,19 +36,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MainView: React.FC<IProps> = ({
+const MovieDetailView: React.FC<IProps> = ({
   onSubmit,
   onChange,
-  onClick,
-  results,
   value,
   loading,
+  results,
 }) => {
   const classes = useStyles();
 
-  const renderText = () => {
-    return <Typography>No Search results...</Typography>;
-  };
   return (
     <MainLayout>
       <Card elevation={2} className={classes.searchCard}>
@@ -60,11 +54,10 @@ const MainView: React.FC<IProps> = ({
       </Card>
       <Card className={classes.contentCard}>
         {loading && <Spinner />}
-        {results.length === 0 ? renderText() : null}
-        <MovieList results={results} onClick={onClick} />
+        <MovieDetail results={results} />
       </Card>
     </MainLayout>
   );
 };
 
-export default MainView;
+export default MovieDetailView;

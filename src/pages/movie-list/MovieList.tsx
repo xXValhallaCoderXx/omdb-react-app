@@ -7,9 +7,10 @@ import { MovieCard } from "shared/components/molecules";
 
 interface IProps {
   results: IMovie[];
+  onClick: (id: string) => void;
 }
 
-const MovieList: React.FC<IProps> = ({ results }) => {
+const MovieList: React.FC<IProps> = ({ results, onClick }) => {
   if (results.length === 0) {
     return null;
   }
@@ -17,7 +18,7 @@ const MovieList: React.FC<IProps> = ({ results }) => {
     <Grid container justify="space-around" spacing={3}>
       {results.map((movie, index) => (
         <Grid item key={index}>
-          <MovieCard movie={movie} />
+          <MovieCard movie={movie} onClick={onClick} />
         </Grid>
       ))}
     </Grid>
