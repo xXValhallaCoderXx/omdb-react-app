@@ -1,21 +1,20 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { IMovie } from "shared/types";
-
+import { IMovieDetail } from "shared/types";
 import { MainLayout } from "shared/layouts";
-import { Card, Spinner, Typography } from "shared/components/atoms";
-import { SearchBar } from "shared/components/molecules";
 
-import MovieList from "./MovieList";
+import { Card, Spinner } from "shared/components/atoms";
+// import { SearchBar } from "shared/components/molecules";
+
+import MovieDetail from "./MovieDetail";
 
 interface IProps {
+  id: string;
   value: string;
   loading: boolean;
-  totalResults: string;
-  results: IMovie[];
+  results: IMovieDetail;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  onClick: (id: string) => void;
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -32,43 +31,35 @@ const useStyles = makeStyles((theme) => ({
   contentCard: {
     marginTop: 35,
     borderRadius: 15,
-    padding: theme.spacing(3),
+
     display: "flex",
     justifyContent: "center",
   },
 }));
 
-const MainView: React.FC<IProps> = ({
+const MovieDetailView: React.FC<IProps> = ({
   onSubmit,
   onChange,
-  onClick,
-  results,
   value,
   loading,
+  results,
+  id,
 }) => {
   const classes = useStyles();
 
-  const renderText = () => {
-    return (
-      <Typography variant="body1" color="secondary">
-        No Search results...
-      </Typography>
-    );
-  };
   return (
-    <MainLayout>
-      <Card elevation={2} className={classes.searchCard}>
+    <MainLayout movieID={id}>
+      {/* <Card elevation={2} className={classes.searchCard}>
         <form onSubmit={onSubmit}>
           <SearchBar onChange={onChange} value={value} loading={loading} />
         </form>
-      </Card>
+      </Card> */}
       <Card className={classes.contentCard}>
         {loading && <Spinner />}
-        {results ? null : renderText()}
-        <MovieList results={results} onClick={onClick} />
+        {results && <MovieDetail results={results} />}
       </Card>
     </MainLayout>
   );
 };
 
-export default MainView;
+export default MovieDetailView;

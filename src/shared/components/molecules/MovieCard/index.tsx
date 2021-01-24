@@ -11,13 +11,21 @@ const useStyles = makeStyles((theme) => ({
   wrapper: {
     borderRadius: 10,
     marginTop: theme.spacing(3),
-    height: 150,
-    width: 450,
+    height: 175,
+    [theme.breakpoints.up("md")]: {
+      width: 450,
+    },
+    maxWidth: 450,
   },
   image: {
+    height: "100%",
     width: "100%",
     objectFit: "cover",
-    clipPath: "polygon(0 150px, 130px 150px, 180px 0, 0 0);",
+    [theme.breakpoints.up("md")]: {
+      clipPath: "polygon(0 175px, 120px 195px, 150px 0, 0 0);",
+    },
+
+    clipPath: "polygon(0 175px,80px 205px, 110px 0, 0 0);",
   },
   textContent: {
     padding: theme.spacing(3),
@@ -29,18 +37,21 @@ const useStyles = makeStyles((theme) => ({
 
 interface IProps {
   movie: IMovie;
+  onClick: (id: string) => void;
 }
 
-const MovieCard: React.FC<IProps> = ({ movie }) => {
+const MovieCard: React.FC<IProps> = ({ movie, onClick }) => {
   const classes = useStyles();
-
+  const handleOnClick = () => {
+    onClick(movie.imdbID);
+  };
   return (
     <Card elevation={5} className={classes.wrapper}>
       <Grid container>
-        <Grid item xs={5}>
+        <Grid item xs={4}>
           <img className={classes.image} alt={movie.Title} src={movie.Poster} />
         </Grid>
-        <Grid item xs={7} className={classes.textContent}>
+        <Grid item xs={8} className={classes.textContent}>
           <Typography color="primary" variant="h6" style={{ fontWeight: 800 }}>
             {movie.Title}
           </Typography>
@@ -50,10 +61,11 @@ const MovieCard: React.FC<IProps> = ({ movie }) => {
           <Button
             size="small"
             color="secondary"
-            variant="outlined"
+            variant="contained"
+            onClick={handleOnClick}
             className={classes.ctaBtn}
           >
-            View More
+            More
           </Button>
         </Grid>
       </Grid>

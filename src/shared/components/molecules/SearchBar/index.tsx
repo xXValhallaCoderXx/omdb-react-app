@@ -26,18 +26,21 @@ const SearchBar: React.FC<IProps> = ({ onChange, value, loading }) => {
   const classes = useStyles();
   return (
     <Grid container spacing={2} className={classes.searchWrapper}>
-      <Grid item xs={10}>
+      <Grid item xs={9} sm={10}>
         <Input
           size="small"
           variant="outlined"
           placeholder="Enter movie title..."
           fullWidth
+          inputProps={{
+            style: { fontStyle: "italic", fontWeight: 500 },
+          }}
           value={value}
           onChange={onChange}
-          icon={<SearchIcon />}
+          icon={<SearchIcon color="primary" />}
         />
       </Grid>
-      <Grid item xs={2}>
+      <Grid item xs={3} sm={2}>
         <Button
           loading={loading}
           className={classes.searchBtn}
