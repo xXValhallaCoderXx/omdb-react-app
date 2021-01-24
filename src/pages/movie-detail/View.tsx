@@ -1,9 +1,11 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { IMovieDetail } from "shared/types";
-import { MainLayout } from "shared/layouts";
 
-import { Card, Spinner } from "shared/components/atoms";
+import { Grid } from "@material-ui/core";
+
+import { MainLayout } from "shared/layouts";
+import { Card, Spinner, Typography } from "shared/components/atoms";
 // import { SearchBar } from "shared/components/molecules";
 
 import MovieDetail from "./MovieDetail";
@@ -31,9 +33,12 @@ const useStyles = makeStyles((theme) => ({
   contentCard: {
     marginTop: 35,
     borderRadius: 15,
-
+    padding: theme.spacing(3),
     display: "flex",
     justifyContent: "center",
+  },
+  spinner: {
+    marginBottom: theme.spacing(2),
   },
 }));
 
@@ -47,6 +52,20 @@ const MovieDetailView: React.FC<IProps> = ({
 }) => {
   const classes = useStyles();
 
+  const renderLoading = () => {
+    return (
+      <Grid>
+        <Grid item container justify="center" className={classes.spinner}>
+          <Spinner />
+        </Grid>
+        <Grid item>
+          <Typography variant="body1" color="secondary">
+            Fetching Movie Details...
+          </Typography>
+        </Grid>
+      </Grid>
+    );
+  };
   return (
     <MainLayout movieID={id}>
       {/* <Card elevation={2} className={classes.searchCard}>
@@ -55,7 +74,7 @@ const MovieDetailView: React.FC<IProps> = ({
         </form>
       </Card> */}
       <Card className={classes.contentCard}>
-        {loading && <Spinner />}
+        {loading && renderLoading()}
         {results && <MovieDetail results={results} />}
       </Card>
     </MainLayout>

@@ -16,31 +16,40 @@ const parseJson = (res: Response) => res.json();
 const { REACT_APP_API_KEY } = process.env;
 
 export interface IResponse {
-  Response: boolean;
+  Response: string;
   Search: IMovie[];
   totalResults: string;
+  Error: string;
 }
 
 const useFetch = () => {
   const [data, setData] = useState<any>(null);
   const [totalResults, setTotalResults] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const apiCall = async (query: string) => {
+  const getMovieList = async (query: string) => {
+    setError("");
+    setData(null);
     setLoading(true);
-    const url = `http://www.omdbapi.com/?apiKey=${REACT_APP_API_KEY}&${query}`;
+    const url = `https://www.omdbapi.com/?apiKey=${REACT_APP_API_KEY}&s=${query}`;
     const results: IResponse = await fetch(url)
       .then(httpStatus)
       .then(parseJson);
-    console.log("RESULT: ", results);
-    setData(results.Search);
-    setTotalResults(results.totalResults);
+
+    if (results.Response === "False") {
+      setError(results.Error);
+    } else if (results.Response === "True") {
+      setData(results.Search);
+      setTotalResults(results.totalResults);
+    }
+
     setLoading(false);
   };
 
-  const movieDetail = async (id: string) => {
+  const getMovie = async (id: string) => {
     setLoading(true);
-    const url = `http://www.omdbapi.com/?apiKey=${REACT_APP_API_KEY}&i=${id}`;
+    const url = `https://www.omdbapi.com/?apiKey=${REACT_APP_API_KEY}&i=${id}`;
     const results: IMovieDetail = await fetch(url)
       .then(httpStatus)
       .then(parseJson);
@@ -48,7 +57,17 @@ const useFetch = () => {
     setLoading(false);
   };
 
-  return { apiCall, data, movieDetail, loading, totalResults };
+  const clearError = () => setError("");
+
+  return {
+    getMovie,
+    getMovieList,
+    data,
+    loading,
+    totalResults,
+    error,
+    clearError,
+  };
 };
 
 export default useFetch;

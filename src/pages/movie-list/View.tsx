@@ -2,6 +2,8 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { IMovie } from "shared/types";
 
+import { Grid } from "@material-ui/core";
+
 import { MainLayout } from "shared/layouts";
 import { Card, Spinner, Typography } from "shared/components/atoms";
 import { SearchBar } from "shared/components/molecules";
@@ -36,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
   },
+  heyTitle: {
+    color: theme.palette.primary.main,
+  },
 }));
 
 const MainView: React.FC<IProps> = ({
@@ -51,10 +56,12 @@ const MainView: React.FC<IProps> = ({
   const renderText = () => {
     return (
       <Typography variant="body1" color="secondary">
-        No Search results...
+        <span className={classes.heyTitle}>Hey! </span>Explore our movie
+        database
       </Typography>
     );
   };
+
   return (
     <MainLayout>
       <Card elevation={2} className={classes.searchCard}>
@@ -64,7 +71,7 @@ const MainView: React.FC<IProps> = ({
       </Card>
       <Card className={classes.contentCard}>
         {loading && <Spinner />}
-        {results ? null : renderText()}
+        {!loading && !results && renderText()}
         <MovieList results={results} onClick={onClick} />
       </Card>
     </MainLayout>
