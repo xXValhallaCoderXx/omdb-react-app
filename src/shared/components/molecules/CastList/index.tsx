@@ -12,7 +12,7 @@ const CastComponent: React.FC<IProps> = ({ actors }) => {
   return (
     <Grid container>
       {actors.map((actor, index) => (
-        <Grid key={index} item md={3}>
+        <Grid key={index} item xs={12} md={3}>
           <Cast actor={actor} />{" "}
         </Grid>
       ))}

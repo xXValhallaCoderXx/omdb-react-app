@@ -11,13 +11,21 @@ const useStyles = makeStyles((theme) => ({
   wrapper: {
     borderRadius: 10,
     marginTop: theme.spacing(3),
-    height: 150,
-    width: 450,
+    height: 175,
+    [theme.breakpoints.up("md")]: {
+      width: 450,
+    },
+    maxWidth: 450,
   },
   image: {
+    height: "100%",
     width: "100%",
     objectFit: "cover",
-    clipPath: "polygon(0 150px, 120px 150px, 140px 0, 0 0);",
+    [theme.breakpoints.up("md")]: {
+      clipPath: "polygon(0 175px, 120px 195px, 150px 0, 0 0);",
+    },
+
+    clipPath: "polygon(0 175px,80px 205px, 110px 0, 0 0);",
   },
   textContent: {
     padding: theme.spacing(3),

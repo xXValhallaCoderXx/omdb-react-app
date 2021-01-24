@@ -4,7 +4,7 @@ import { IMovieDetail } from "shared/types";
 import { MainLayout } from "shared/layouts";
 
 import { Card, Spinner } from "shared/components/atoms";
-import { SearchBar } from "shared/components/molecules";
+// import { SearchBar } from "shared/components/molecules";
 
 import MovieDetail from "./MovieDetail";
 
@@ -55,7 +55,7 @@ const MovieDetailView: React.FC<IProps> = ({
         </form>
       </Card> */}
       <Card className={classes.contentCard}>
-        {false && <Spinner />}
+        {loading && <Spinner />}
         {results && <MovieDetail results={results} />}
       </Card>
     </MainLayout>

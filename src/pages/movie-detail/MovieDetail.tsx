@@ -47,7 +47,7 @@ const MovieList: React.FC<IProps> = ({ results }) => {
               <img src={results.Poster} alt={results.Title} />
             </Grid>
             <Grid item xs={12} lg={8}>
-              <Box ml={2}>
+              <Box ml={2} style={{ marginTop: 20 }}>
                 {genres().map((genre, index) => (
                   <Chip
                     color="primary"
