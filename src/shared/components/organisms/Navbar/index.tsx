@@ -33,7 +33,7 @@ const NavigationBar: React.FC<IProps> = ({ movieID }) => {
           OMDB React App
         </Typography>
         {movieID && (
-          <Button onClick={onClickBack} color="inherit">
+          <Button onClick={onClickBack} color="secondary" variant="contained">
             Back
           </Button>
         )}

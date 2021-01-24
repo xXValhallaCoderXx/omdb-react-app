@@ -49,11 +49,11 @@ const MovieDetailView: React.FC<IProps> = ({
 
   return (
     <MainLayout movieID={id}>
-      <Card elevation={2} className={classes.searchCard}>
+      {/* <Card elevation={2} className={classes.searchCard}>
         <form onSubmit={onSubmit}>
           <SearchBar onChange={onChange} value={value} loading={loading} />
         </form>
-      </Card>
+      </Card> */}
       <Card className={classes.contentCard}>
         {false && <Spinner />}
         {results && <MovieDetail results={results} />}

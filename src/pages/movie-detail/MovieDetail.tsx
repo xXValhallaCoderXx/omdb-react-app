@@ -1,5 +1,7 @@
 import React from "react";
+
 import { IMovieDetail } from "shared/types";
+import { makeStyles } from "@material-ui/core/styles";
 
 import { Box, Grid, Container, Chip } from "@material-ui/core";
 
@@ -10,10 +12,29 @@ interface IProps {
   results: IMovieDetail;
 }
 
+const useStyles = makeStyles((theme) => ({
+  height: {
+    [theme.breakpoints.down("xs")]: {
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
+    height: "100%",
+  },
+  content: {
+    minHeight: "100vh",
+    backgroundColor: theme.palette.secondary.main,
+  },
+  childContent: {
+    marginTop: theme.spacing(5),
+    paddingBottom: theme.spacing(5),
+  },
+}));
+
 const MovieList: React.FC<IProps> = ({ results }) => {
+  const classes = useStyles();
   const actors = () => results.Actors.split(",");
   const genres = () => results.Genre.split(",");
-  console.log("RESULTS: ", results);
+
   return (
     <Grid container>
       <Grid item xs={12}>
@@ -22,10 +43,10 @@ const MovieList: React.FC<IProps> = ({ results }) => {
             {results.Title}
           </Typography>
           <Grid container style={{ marginTop: 30 }}>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} lg={4} container justify="center">
               <img src={results.Poster} alt={results.Title} />
             </Grid>
-            <Grid item xs={12} md={8}>
+            <Grid item xs={12} lg={8}>
               <Box ml={2}>
                 {genres().map((genre, index) => (
                   <Chip key={index} label={genre} style={{ marginRight: 10 }} />
@@ -57,17 +78,11 @@ const MovieList: React.FC<IProps> = ({ results }) => {
         </Container>
       </Grid>
       <Grid item xs={12}>
-        <Container maxWidth="md" style={{ marginTop: 30 }}>
+        <Container maxWidth="md" style={{ marginTop: 30, paddingBottom: 30 }}>
           <Typography variant="h4" align="center">
             Cast
           </Typography>
           <CastList actors={actors()} />
-          <Card>
-            <Typography>Plot</Typography>
-            <Card>
-              <Typography>{results.Plot}</Typography>
-            </Card>
-          </Card>
         </Container>
       </Grid>
     </Grid>
