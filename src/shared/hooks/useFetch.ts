@@ -28,7 +28,7 @@ const useFetch = () => {
 
   const apiCall = async (query: string) => {
     setLoading(true);
-    const url = `http://www.omdbapi.com/?apiKey=${REACT_APP_API_KEY}&${query}`;
+    const url = `https://www.omdbapi.com/?apiKey=${REACT_APP_API_KEY}&${query}`;
     const results: IResponse = await fetch(url)
       .then(httpStatus)
       .then(parseJson);
@@ -40,7 +40,7 @@ const useFetch = () => {
 
   const movieDetail = async (id: string) => {
     setLoading(true);
-    const url = `http://www.omdbapi.com/?apiKey=${REACT_APP_API_KEY}&i=${id}`;
+    const url = `https://www.omdbapi.com/?apiKey=${REACT_APP_API_KEY}&i=${id}`;
     const results: IMovieDetail = await fetch(url)
       .then(httpStatus)
       .then(parseJson);

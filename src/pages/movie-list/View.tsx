@@ -64,7 +64,7 @@ const MainView: React.FC<IProps> = ({
       </Card>
       <Card className={classes.contentCard}>
         {loading && <Spinner />}
-        {results ? null : renderText()}
+        {results && !loading ? null : renderText()}
         <MovieList results={results} onClick={onClick} />
       </Card>
     </MainLayout>
