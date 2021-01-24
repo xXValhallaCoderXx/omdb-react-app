@@ -1,19 +1,30 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
+import useFetch from "shared/hooks/useFetch";
+
 import View from "./View";
 
-import { IMovieList } from "shared/types";
-
 const MovieListContainer: React.FC = () => {
+  const { apiCall, loading, totalResults, data } = useFetch();
   const [searchTerm, setSearchTerm] = useState("");
-  const [results, setResults] = useState<IMovieList[]>([]);
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) =>
     setSearchTerm(e.target.value);
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    console.log("ON SUBMIT");
+    e.preventDefault();
+    apiCall(searchTerm);
   };
-  return <View value="" onChange={onChange} onSubmit={onSubmit} results={[]} />;
+
+  return (
+    <View
+      value={searchTerm}
+      onChange={onChange}
+      onSubmit={onSubmit}
+      results={data}
+      loading={loading}
+      totalResults={totalResults}
+    />
+  );
 };
 
 export default MovieListContainer;

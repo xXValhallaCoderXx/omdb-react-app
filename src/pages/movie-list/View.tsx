@@ -1,6 +1,6 @@
 import React from "react";
 
-import { IMovieList } from "shared/types";
+import { IMovie } from "shared/types";
 
 import { Box } from "@material-ui/core";
 
@@ -10,7 +10,9 @@ import { SearchBar } from "shared/components/molecules";
 
 interface IProps {
   value: string;
-  results: IMovieList[];
+  loading: boolean;
+  totalResults: string;
+  results: IMovie[];
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
@@ -22,7 +24,9 @@ const MainView: React.FC<IProps> = ({ onSubmit, onChange, results, value }) => {
         elevation={2}
         style={{ position: "sticky", top: 55, borderRadius: 15 }}
       >
-        <SearchBar onChange={onChange} value="" />
+        <form onSubmit={onSubmit}>
+          <SearchBar onChange={onChange} value={value} />
+        </form>
       </Card>
       <Card style={{ marginTop: 35, borderRadius: 15 }}>
         <Typography align="center" variant="h4">
