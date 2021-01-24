@@ -19,9 +19,10 @@ const useStyles = makeStyles((theme) => ({
 interface IProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value: string;
+  loading?: boolean;
 }
 
-const SearchBar: React.FC<IProps> = ({ onChange, value }) => {
+const SearchBar: React.FC<IProps> = ({ onChange, value, loading }) => {
   const classes = useStyles();
   return (
     <Grid container spacing={2} className={classes.searchWrapper}>
@@ -38,6 +39,7 @@ const SearchBar: React.FC<IProps> = ({ onChange, value }) => {
       </Grid>
       <Grid item xs={2}>
         <Button
+          loading={loading}
           className={classes.searchBtn}
           fullWidth
           variant="contained"
