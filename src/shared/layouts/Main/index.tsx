@@ -1,6 +1,8 @@
 import React from "react";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { makeStyles } from "@material-ui/core/styles";
-import { Box, Container } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 import { Navbar } from "shared/components/organisms";
 
 interface IProps {
@@ -28,13 +30,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MainLayout: React.FC<IProps> = (props) => {
-  const { children, mobile, movieID } = props;
   const classes = useStyles();
+  const theme = useTheme();
+  const isLarge = useMediaQuery(theme.breakpoints.up("lg"));
+
+  const { children, mobile, movieID } = props;
+  const handleMaxWidth = () => (isLarge ? "lg" : "sm");
   return (
     <div className={classes.content}>
       <Navbar movieID={movieID} mobile={mobile} />
-
-      <Container maxWidth="md" className={classes.childContent}>
+      <Container maxWidth={handleMaxWidth()} className={classes.childContent}>
         {children}
       </Container>
     </div>
