@@ -7,11 +7,15 @@ interface IProps {
   mobile?: boolean;
   movieID?: string;
   children: any;
-  style: any;
+  style?: any;
 }
 
 const useStyles = makeStyles((theme) => ({
   height: {
+    [theme.breakpoints.down("xs")]: {
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
     height: "100%",
   },
   content: {
@@ -25,10 +29,12 @@ const MainLayout: React.FC<IProps> = (props) => {
   const { children, mobile, movieID } = props;
   const classes = useStyles();
   return (
-    <div style={props.style} className={classes.content}>
+    <div className={classes.content}>
       <Navbar movieID={movieID} mobile={mobile} />
       <Box mt={9} className={classes.height}>
-        <Container className={classes.height}>{children}</Container>
+        <Container maxWidth="md" className={classes.height}>
+          {children}
+        </Container>
       </Box>
     </div>
   );
