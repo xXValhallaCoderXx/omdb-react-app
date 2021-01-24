@@ -2,11 +2,11 @@ import React from "react";
 
 import { IMovie } from "shared/types";
 
-import { Box } from "@material-ui/core";
-
 import { MainLayout } from "shared/layouts";
 import { Card, Typography } from "shared/components/atoms";
 import { SearchBar } from "shared/components/molecules";
+
+import MovieList from "./MovieList";
 
 interface IProps {
   value: string;
@@ -32,6 +32,7 @@ const MainView: React.FC<IProps> = ({ onSubmit, onChange, results, value }) => {
         <Typography align="center" variant="h4">
           No Content
         </Typography>
+        <MovieList results={results} />
       </Card>
     </MainLayout>
   );

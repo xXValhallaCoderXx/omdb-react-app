@@ -34,7 +34,7 @@ const MainLayout: React.FC<IProps> = (props) => {
     <div className={classes.content}>
       <Navbar movieID={movieID} mobile={mobile} />
 
-      <Container maxWidth="md" className={classes.childContent}>
+      <Container maxWidth="lg" className={classes.childContent}>
         {children}
       </Container>
     </div>
