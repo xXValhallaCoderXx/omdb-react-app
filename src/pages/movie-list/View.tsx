@@ -22,16 +22,18 @@ const MainView: React.FC<IProps> = ({ onSubmit, onChange, results, value }) => {
     <MainLayout>
       <Card
         elevation={2}
-        style={{ position: "sticky", top: 55, borderRadius: 15 }}
+        style={{
+          position: "sticky",
+          top: 55,
+          borderRadius: 15,
+          paddingBottom: 30,
+        }}
       >
         <form onSubmit={onSubmit}>
           <SearchBar onChange={onChange} value={value} />
         </form>
       </Card>
-      <Card style={{ marginTop: 35, borderRadius: 15 }}>
-        <Typography align="center" variant="h4">
-          No Content
-        </Typography>
+      <Card style={{ marginTop: 35, borderRadius: 15, paddingBottom: 45 }}>
         <MovieList results={results} />
       </Card>
     </MainLayout>
