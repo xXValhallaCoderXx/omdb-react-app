@@ -3,6 +3,7 @@ import { createMuiTheme } from "@material-ui/core/styles";
 const theme = createMuiTheme({
   typography: {
     fontFamily: "'Roboto', sans-serif",
+
     body1: {
       fontSize: 18,
       fontWeight: 600,
