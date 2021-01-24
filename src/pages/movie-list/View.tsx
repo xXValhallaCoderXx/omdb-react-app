@@ -2,8 +2,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { IMovie } from "shared/types";
 
-import { Grid } from "@material-ui/core";
-
 import { MainLayout } from "shared/layouts";
 import { Card, Spinner, Typography } from "shared/components/atoms";
 import { SearchBar } from "shared/components/molecules";

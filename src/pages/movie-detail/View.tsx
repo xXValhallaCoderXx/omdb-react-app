@@ -6,7 +6,6 @@ import { Grid } from "@material-ui/core";
 
 import { MainLayout } from "shared/layouts";
 import { Card, Spinner, Typography } from "shared/components/atoms";
-// import { SearchBar } from "shared/components/molecules";
 
 import MovieDetail from "./MovieDetail";
 
@@ -68,11 +67,6 @@ const MovieDetailView: React.FC<IProps> = ({
   };
   return (
     <MainLayout movieID={id}>
-      {/* <Card elevation={2} className={classes.searchCard}>
-        <form onSubmit={onSubmit}>
-          <SearchBar onChange={onChange} value={value} loading={loading} />
-        </form>
-      </Card> */}
       <Card className={classes.contentCard}>
         {loading && renderLoading()}
         {results && <MovieDetail results={results} />}
