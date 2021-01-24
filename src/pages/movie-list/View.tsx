@@ -3,7 +3,7 @@ import React from "react";
 import { IMovie } from "shared/types";
 
 import { MainLayout } from "shared/layouts";
-import { Card, Typography } from "shared/components/atoms";
+import { Card } from "shared/components/atoms";
 import { SearchBar } from "shared/components/molecules";
 
 import MovieList from "./MovieList";
@@ -27,6 +27,9 @@ const MainView: React.FC<IProps> = ({ onSubmit, onChange, results, value }) => {
           top: 55,
           borderRadius: 15,
           paddingBottom: 30,
+          paddingLeft: 20,
+          paddingRight: 20,
+          zIndex: 100,
         }}
       >
         <form onSubmit={onSubmit}>

@@ -37,10 +37,10 @@ const MovieCard: React.FC<IProps> = ({ movie }) => {
   return (
     <Card elevation={5} className={classes.wrapper}>
       <Grid container>
-        <Grid item md={5}>
+        <Grid item xs={5}>
           <img className={classes.image} alt={movie.Title} src={movie.Poster} />
         </Grid>
-        <Grid item md={7} className={classes.textContent}>
+        <Grid item xs={7} className={classes.textContent}>
           <Typography color="primary" variant="h6" style={{ fontWeight: 800 }}>
             {movie.Title}
           </Typography>
