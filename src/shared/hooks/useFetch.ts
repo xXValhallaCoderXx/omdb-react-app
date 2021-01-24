@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { IMovie } from "shared/types";
 
 const httpStatus: any = (response: Response) => {
@@ -25,7 +25,6 @@ const useFetch = () => {
   const [data, setData] = useState<IMovie[]>([]);
   const [totalResults, setTotalResults] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
 
   const apiCall = async (name: string) => {
     setLoading(true);
