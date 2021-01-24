@@ -11,7 +11,11 @@ type IProps = ILocal & ButtonProps;
 
 const ButtonComponent: React.FC<IProps> = ({ children, loading, ...rest }) => {
   return (
-    <Button disabled={loading} style={{ fontWeight: 600 }} {...rest}>
+    <Button
+      disabled={loading}
+      style={{ fontWeight: 600, color: "#7FAAE4" }}
+      {...rest}
+    >
       {loading ? <Spinner style={{ height: 30, width: 30 }} /> : children}
     </Button>
   );

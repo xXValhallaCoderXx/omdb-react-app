@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   image: {
     width: "100%",
     objectFit: "cover",
-    clipPath: "polygon(0 150px, 130px 150px, 180px 0, 0 0);",
+    clipPath: "polygon(0 150px, 120px 150px, 140px 0, 0 0);",
   },
   textContent: {
     padding: theme.spacing(3),
@@ -40,10 +40,10 @@ const MovieCard: React.FC<IProps> = ({ movie, onClick }) => {
   return (
     <Card elevation={5} className={classes.wrapper}>
       <Grid container>
-        <Grid item xs={5}>
+        <Grid item xs={4}>
           <img className={classes.image} alt={movie.Title} src={movie.Poster} />
         </Grid>
-        <Grid item xs={7} className={classes.textContent}>
+        <Grid item xs={8} className={classes.textContent}>
           <Typography color="primary" variant="h6" style={{ fontWeight: 800 }}>
             {movie.Title}
           </Typography>
@@ -53,11 +53,11 @@ const MovieCard: React.FC<IProps> = ({ movie, onClick }) => {
           <Button
             size="small"
             color="secondary"
-            variant="outlined"
+            variant="contained"
             onClick={handleOnClick}
             className={classes.ctaBtn}
           >
-            View More
+            More
           </Button>
         </Grid>
       </Grid>

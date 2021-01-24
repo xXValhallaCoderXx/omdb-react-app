@@ -49,7 +49,11 @@ const MainView: React.FC<IProps> = ({
   const classes = useStyles();
 
   const renderText = () => {
-    return <Typography>No Search results...</Typography>;
+    return (
+      <Typography variant="body1" color="secondary">
+        No Search results...
+      </Typography>
+    );
   };
   return (
     <MainLayout>

@@ -13,6 +13,8 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     title: {
       flexGrow: 1,
+      display: "flex",
+      flexDirection: "column",
     },
   })
 );
@@ -27,11 +29,25 @@ const NavigationBar: React.FC<IProps> = ({ movieID }) => {
   const history = useHistory();
   const onClickBack = () => history.push("/movies");
   return (
-    <AppBar position="sticky">
+    <AppBar position="sticky" style={{ backgroundColor: "white" }}>
       <Toolbar>
-        <Typography variant="h6" className={classes.title}>
-          OMDB React App
-        </Typography>
+        <div className={classes.title}>
+          <Typography
+            style={{ marginBottom: 0, fontWeight: 600 }}
+            variant="body2"
+            color="primary"
+          >
+            Hey
+          </Typography>
+          <Typography
+            style={{ marginTop: -5, fontWeight: 600 }}
+            variant="body2"
+            color="secondary"
+          >
+            Cinema
+          </Typography>
+        </div>
+
         {movieID && (
           <Button onClick={onClickBack} color="secondary" variant="contained">
             Back

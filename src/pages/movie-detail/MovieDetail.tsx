@@ -39,7 +39,7 @@ const MovieList: React.FC<IProps> = ({ results }) => {
     <Grid container>
       <Grid item xs={12}>
         <Container maxWidth="md" style={{ marginTop: 30 }}>
-          <Typography align="center" variant="h3">
+          <Typography align="center" variant="h3" color="secondary">
             {results.Title}
           </Typography>
           <Grid container style={{ marginTop: 30 }}>
@@ -49,26 +49,39 @@ const MovieList: React.FC<IProps> = ({ results }) => {
             <Grid item xs={12} lg={8}>
               <Box ml={2}>
                 {genres().map((genre, index) => (
-                  <Chip key={index} label={genre} style={{ marginRight: 10 }} />
+                  <Chip
+                    color="primary"
+                    key={index}
+                    label={genre}
+                    style={{ marginRight: 10 }}
+                  />
                 ))}
-                <Typography variant="h5" style={{ marginTop: 10 }}>
+                <Typography
+                  variant="body1"
+                  color="secondary"
+                  style={{ marginTop: 10 }}
+                >
                   Overview
                 </Typography>
-                <Typography variant="body1" style={{ marginTop: 10 }}>
+                <Typography variant="body2" style={{ marginTop: 10 }}>
                   {results.Plot}
                 </Typography>
-                <Typography variant="h5" style={{ marginTop: 10 }}>
+                <Typography
+                  variant="body1"
+                  color="secondary"
+                  style={{ marginTop: 10 }}
+                >
                   Info
                 </Typography>
-                <Typography variant="h6" style={{ marginTop: 10 }}>
+                <Typography variant="body2" style={{ marginTop: 10 }}>
                   <span style={{ fontWeight: 600 }}>Released:</span>{" "}
                   {results.Released}
                 </Typography>
-                <Typography variant="h6" style={{ marginTop: 10 }}>
+                <Typography variant="body2" style={{ marginTop: 10 }}>
                   <span style={{ fontWeight: 600 }}>Running Time:</span>{" "}
                   {results.Runtime}
                 </Typography>
-                <Typography variant="h6" style={{ marginTop: 10 }}>
+                <Typography variant="body2" style={{ marginTop: 10 }}>
                   <span style={{ fontWeight: 600 }}>Box Office:</span>{" "}
                   {results.BoxOffice}
                 </Typography>
@@ -79,7 +92,7 @@ const MovieList: React.FC<IProps> = ({ results }) => {
       </Grid>
       <Grid item xs={12}>
         <Container maxWidth="md" style={{ marginTop: 30, paddingBottom: 30 }}>
-          <Typography variant="h4" align="center">
+          <Typography variant="h4" color="secondary" align="center">
             Cast
           </Typography>
           <CastList actors={actors()} />

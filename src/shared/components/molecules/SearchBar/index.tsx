@@ -32,9 +32,12 @@ const SearchBar: React.FC<IProps> = ({ onChange, value, loading }) => {
           variant="outlined"
           placeholder="Enter movie title..."
           fullWidth
+          inputProps={{
+            style: { fontStyle: "italic", fontWeight: 500 },
+          }}
           value={value}
           onChange={onChange}
-          icon={<SearchIcon />}
+          icon={<SearchIcon color="primary" />}
         />
       </Grid>
       <Grid item xs={2}>

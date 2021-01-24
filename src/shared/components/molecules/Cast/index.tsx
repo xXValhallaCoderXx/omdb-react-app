@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { Avatar, Grid } from "@material-ui/core";
-import FolderIcon from "@material-ui/icons/Folder";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 import { Typography } from "shared/components/atoms";
 
@@ -23,11 +23,13 @@ const CastComponent: React.FC<IProps> = ({ actor }) => {
     <Grid container>
       <Grid item container xs={12} justify="center">
         <Avatar className={classes.content}>
-          <FolderIcon />
+          <AccountCircleIcon fontSize="large" />
         </Avatar>
       </Grid>
       <Grid item container xs={12} justify="center">
-        <Typography>{actor}</Typography>
+        <Typography variant="body1" color="primary">
+          {actor}
+        </Typography>
       </Grid>
     </Grid>
   );
