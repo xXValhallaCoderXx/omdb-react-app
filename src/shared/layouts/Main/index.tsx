@@ -20,8 +20,10 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     minHeight: "100vh",
-    paddingBottom: theme.spacing(10),
     backgroundColor: theme.palette.secondary.main,
+  },
+  childContent: {
+    marginTop: theme.spacing(5),
   },
 }));
 
@@ -31,11 +33,10 @@ const MainLayout: React.FC<IProps> = (props) => {
   return (
     <div className={classes.content}>
       <Navbar movieID={movieID} mobile={mobile} />
-      <Box mt={9} className={classes.height}>
-        <Container maxWidth="md" className={classes.height}>
-          {children}
-        </Container>
-      </Box>
+
+      <Container maxWidth="md" className={classes.childContent}>
+        {children}
+      </Container>
     </div>
   );
 };

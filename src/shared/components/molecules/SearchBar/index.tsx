@@ -14,9 +14,6 @@ const useStyles = makeStyles((theme) => ({
     position: "sticky",
     top: 60,
   },
-  leftContent: {
-    padding: theme.spacing(5),
-  },
 }));
 
 interface IProps {
@@ -27,30 +24,8 @@ interface IProps {
 const SearchBar: React.FC<IProps> = ({ onChange, value }) => {
   const classes = useStyles();
   return (
-    // <Grid container spacing={3}>
-    //   <Grid item md={10}>
-    //     <Input
-    //       variant="outlined"
-    //       placeholder="Enter movie title..."
-    //       fullWidth
-    //       value={value}
-    //       onChange={onChange}
-    //       icon={<SearchIcon />}
-    //     />
-    //   </Grid>
-    //   <Grid item md={2}>
-    //     <Button
-    //       className={classes.searchBtn}
-    //       fullWidth
-    //       variant="contained"
-    //       type="submit"
-    //     >
-    //       Submit
-    //     </Button>
-    //   </Grid>
-    // </Grid>
     <Grid container spacing={2} className={classes.searchWrapper}>
-      <Grid item xs={8}>
+      <Grid item xs={10}>
         <Input
           size="small"
           variant="outlined"
@@ -61,8 +36,14 @@ const SearchBar: React.FC<IProps> = ({ onChange, value }) => {
           icon={<SearchIcon />}
         />
       </Grid>
-      <Grid item xs={4}>
-        <Button fullWidth variant="contained" type="submit">
+      <Grid item xs={2}>
+        <Button
+          className={classes.searchBtn}
+          fullWidth
+          variant="contained"
+          color="secondary"
+          type="submit"
+        >
           Submit
         </Button>
       </Grid>
