@@ -4,11 +4,12 @@ import { IMovieDetail } from "shared/types";
 import { MainLayout } from "shared/layouts";
 
 import { Card, Spinner } from "shared/components/atoms";
-import { SearchBar, Cast } from "shared/components/molecules";
+import { SearchBar } from "shared/components/molecules";
 
 import MovieDetail from "./MovieDetail";
 
 interface IProps {
+  id: string;
   value: string;
   loading: boolean;
   results: IMovieDetail;
@@ -30,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   contentCard: {
     marginTop: 35,
     borderRadius: 15,
-    padding: theme.spacing(3),
+
     display: "flex",
     justifyContent: "center",
   },
@@ -42,19 +43,20 @@ const MovieDetailView: React.FC<IProps> = ({
   value,
   loading,
   results,
+  id,
 }) => {
   const classes = useStyles();
 
   return (
-    <MainLayout>
+    <MainLayout movieID={id}>
       <Card elevation={2} className={classes.searchCard}>
         <form onSubmit={onSubmit}>
           <SearchBar onChange={onChange} value={value} loading={loading} />
         </form>
       </Card>
       <Card className={classes.contentCard}>
-        {loading && <Spinner />}
-        <MovieDetail results={results} />
+        {false && <Spinner />}
+        {results && <MovieDetail results={results} />}
       </Card>
     </MainLayout>
   );

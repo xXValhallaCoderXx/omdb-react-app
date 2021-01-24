@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -23,14 +24,19 @@ interface IProps {
 
 const NavigationBar: React.FC<IProps> = ({ movieID }) => {
   const classes = useStyles();
-
+  const history = useHistory();
+  const onClickBack = () => history.push("/movies");
   return (
     <AppBar position="sticky">
       <Toolbar>
         <Typography variant="h6" className={classes.title}>
           OMDB React App
         </Typography>
-        {movieID && <Button color="inherit">Back</Button>}
+        {movieID && (
+          <Button onClick={onClickBack} color="inherit">
+            Back
+          </Button>
+        )}
       </Toolbar>
     </AppBar>
   );

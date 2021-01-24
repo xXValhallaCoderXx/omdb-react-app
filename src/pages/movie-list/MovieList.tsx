@@ -11,7 +11,7 @@ interface IProps {
 }
 
 const MovieList: React.FC<IProps> = ({ results, onClick }) => {
-  if (results.length === 0) {
+  if (!results) {
     return null;
   }
   return (

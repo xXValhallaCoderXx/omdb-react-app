@@ -10,11 +10,11 @@ const MovieListContainer: React.FC = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) =>
-    setSearchTerm(`s=${e.target.value}`);
+    setSearchTerm(e.target.value);
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    apiCall(searchTerm);
+    apiCall(`s=${searchTerm}`);
   };
 
   const onMovieClick = (id: string) => {

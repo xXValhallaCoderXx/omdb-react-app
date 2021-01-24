@@ -10,13 +10,13 @@ interface IParams {
 const MovieListContainer: React.FC<RouteComponentProps<IParams>> = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
   const { movieDetail, loading, data } = useFetch();
+  const { id } = props.match.params;
   React.useEffect(() => {
-    const id = props.match.params.id;
     movieDetail(id);
   }, []);
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) =>
-    setSearchTerm(`s=${e.target.value}`);
+    setSearchTerm(e.target.value);
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -30,6 +30,7 @@ const MovieListContainer: React.FC<RouteComponentProps<IParams>> = (props) => {
       value={searchTerm}
       loading={loading}
       results={data}
+      id={id}
     />
   );
 };

@@ -22,7 +22,7 @@ export interface IResponse {
 }
 
 const useFetch = () => {
-  const [data, setData] = useState<any>([]);
+  const [data, setData] = useState<any>(null);
   const [totalResults, setTotalResults] = useState("");
   const [loading, setLoading] = useState(false);
 
