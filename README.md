@@ -6,6 +6,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [Live Version](https://omdb-react-app.web.app/movies)
 
+## Note
+- Helvetica Neue was not used due to it being a premium font - used google fonts Roboto for now
+
 ## Application Commands
 
 #### Local Environment
