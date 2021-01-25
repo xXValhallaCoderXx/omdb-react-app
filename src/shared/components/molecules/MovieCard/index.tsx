@@ -42,7 +42,6 @@ interface IProps {
 }
 
 const MovieCard: React.FC<IProps> = ({ movie, onClick }) => {
-  console.log("MOVIE POST: ", movie.Poster);
   const classes = useStyles();
   const handleOnClick = () => {
     onClick(movie.imdbID);
