@@ -27,7 +27,7 @@ const CastComponent: React.FC<IProps> = ({ actor }) => {
         </Avatar>
       </Grid>
       <Grid item container xs={12} justify="center">
-        <Typography variant="body1" color="primary">
+        <Typography align="center" variant="body1" color="primary">
           {actor}
         </Typography>
       </Grid>

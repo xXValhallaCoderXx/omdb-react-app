@@ -1,7 +1,9 @@
 import React from "react";
 
-import { IMovieDetail } from "shared/types";
 import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+
+import { IMovieDetail } from "shared/types";
 
 import { Box, Grid, Container, Chip } from "@material-ui/core";
 
@@ -16,7 +18,7 @@ const MovieList: React.FC<IProps> = ({ results }) => {
   const theme = useTheme();
   const actors = () => results.Actors.split(",");
   const genres = () => results.Genre.split(",");
-
+  const isLarge = useMediaQuery(theme.breakpoints.up("lg"));
   return (
     <Grid container>
       <Grid item xs={12}>
@@ -29,13 +31,16 @@ const MovieList: React.FC<IProps> = ({ results }) => {
               <img src={results.Poster} alt={results.Title} />
             </Grid>
             <Grid item xs={12} lg={8}>
-              <Box ml={2} style={{ marginTop: theme.spacing(2) }}>
+              <Box ml={isLarge ? 2 : 0} style={{ marginTop: theme.spacing(2) }}>
                 {genres().map((genre, index) => (
                   <Chip
                     color="primary"
                     key={index}
                     label={genre}
-                    style={{ marginRight: theme.spacing(1) }}
+                    style={{
+                      marginRight: theme.spacing(1),
+                      marginTop: theme.spacing(1),
+                    }}
                   />
                 ))}
                 <Typography
