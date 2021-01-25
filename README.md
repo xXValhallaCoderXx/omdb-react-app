@@ -6,6 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [Live Version](https://omdb-react-app.web.app/movies)
 
+## Note
+- Helvetica Neue was not used due to it being a premium font - used google fonts Roboto for now
+- Due to being constrained to using Card to display results I believe UX flow could have been improved slightly such as this previous application I made [TMDB App](https://afternoon-spire-06540.herokuapp.com/movies) in this [Older repo](https://github.com/xXValhallaCoderXx/the-movie-db-app-react)
+
 ## Application Commands
 
 #### Local Environment
