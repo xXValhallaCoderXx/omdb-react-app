@@ -15,9 +15,9 @@ const MovieList: React.FC<IProps> = ({ results, onClick }) => {
     return null;
   }
   return (
-    <Grid container justify="space-around" spacing={3}>
+    <Grid container justify="center">
       {results.map((movie, index) => (
-        <Grid item key={index}>
+        <Grid xs={12} lg={6} item key={index} container justify="center">
           <MovieCard movie={movie} onClick={onClick} />
         </Grid>
       ))}
